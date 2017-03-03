@@ -1,7 +1,7 @@
 #STAR.aligner
-#Tue Feb 21 02:50:15 CET 2017
+#Fri Mar 03 01:09:59 CET 2017
 JVMLevel=
-LSID=urn\:lsid\:6868.gbottu.r910.r910.vib-bits\:genepatternmodules\:8\:1.0.1
+LSID=urn\:lsid\:6868.gbottu.r910.r910.vib-bits\:genepatternmodules\:8\:1.0.2
 author=Guy Bottu;V.I.B.-B.I.T.S.
 categories=RNA-seq
 commandLine=<perl> <libdir>star_aligner_wrapper.pl --patchesdir <patches> --index <star.index> --reads1 <reads.pair.1> <reads.pair.2> <max.reads.to.align> --alignendtoend <align.read.end.to.end> --maxNmismatch <max.number.mismatches> --maxFmismatch <max.fraction.mistaches> --minoverhangannot <min.overhang.annotated.read> --minoverhangnotannot <min.overhang.not.annotated.read> --minintronlength <min.intron.length> --maxintronlength <max.intron.length> --matesmaxgap <mates.max.gap> --multimapmismatchrange <secondary.mapping.mismatches.range> --maxmultimap <max.multimapping> --canonicaloverhang <min.report.canonical.junction.overhang> --noncanonicaloverhang <min.report.noncanonical.junction.overhang> --maponlyreportedjunctions <map.only.reported.juntions> --twopass <two.pass> --detectchimeric <detect.chimeric.transcripts> --outputunmapped <output.unmapped.reads> --quantify <quantify.genes> --wiggle <output.wiggle.file> --wigglesignal <wiggle.signal>  --format <output.format> --HIflag <HI.flag> <output.prefix>
@@ -150,7 +150,7 @@ p19_type=java.lang.String
 p19_value=yes\=yes;no\=no
 p1_MODE=IN
 p1_TYPE=FILE
-p1_choiceDir=ftp\://192.168.10.2/pub/star_index/
+p1_choiceDir=ftp://193.191.128.4/pub/star_index/
 p1_choiceDirFilter=type\=dir
 p1_default_value=
 p1_description=A STAR index. Select a prebuilt index or upload your own as a ZIP file (you can make one using STAR.indexer).
@@ -368,4 +368,4 @@ quality=production
 taskDoc=star_aligner.html
 taskType=RNA-seq
 userid=gbottu
-version=genome folder redirected to B.I.T.S. via internal network
+version=genome folder redirected back to public VIB FTP site
