@@ -1,7 +1,8 @@
 #STAR.aligner
 #Fri Mar 03 01:09:59 CET 2017
 JVMLevel=
-LSID=urn\:lsid\:6868.gbottu.r910.r910.vib-bits\:genepatternmodules\:8\:1.0.2
+LSID=urn:lsid:org.genepattern:module.star:00010:1.0.3
+
 author=Guy Bottu;V.I.B.-B.I.T.S.
 categories=RNA-seq
 commandLine=<perl> <libdir>star_aligner_wrapper.pl --patchesdir <patches> --index <star.index> --reads1 <reads.pair.1> <reads.pair.2> <max.reads.to.align> --alignendtoend <align.read.end.to.end> --maxNmismatch <max.number.mismatches> --maxFmismatch <max.fraction.mistaches> --minoverhangannot <min.overhang.annotated.read> --minoverhangnotannot <min.overhang.not.annotated.read> --minintronlength <min.intron.length> --maxintronlength <max.intron.length> --matesmaxgap <mates.max.gap> --multimapmismatchrange <secondary.mapping.mismatches.range> --maxmultimap <max.multimapping> --canonicaloverhang <min.report.canonical.junction.overhang> --noncanonicaloverhang <min.report.noncanonical.junction.overhang> --maponlyreportedjunctions <map.only.reported.juntions> --twopass <two.pass> --detectchimeric <detect.chimeric.transcripts> --outputunmapped <output.unmapped.reads> --quantify <quantify.genes> --wiggle <output.wiggle.file> --wigglesignal <wiggle.signal>  --format <output.format> --HIflag <HI.flag> <output.prefix>
@@ -368,4 +369,4 @@ quality=production
 taskDoc=star_aligner.html
 taskType=RNA-seq
 userid=gbottu
-version=genome folder redirected back to public VIB FTP site
+version=Changed base lsid to match GenePattern naming convention
