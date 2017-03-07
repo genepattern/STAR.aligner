@@ -2,11 +2,10 @@ use Getopt::Long;
 use Archive::Extract; # needed for custom index
 use File::Path qw(make_path remove_tree); # needed for custom index
 
-$star = 'STAR-2.5.2b/bin/Linux_x86_64_static/STAR';
+#$star = 'STAR-2.5.2b/bin/Linux_x86_64_static/STAR';
 $Nthreads = 4;
 
 GetOptions(\%options,
-  "patchesdir=s", # --patchesdir <patches> must be on command-line
   "index=s", # an FTP object
   "reads1=s", # if reads2 not precised we assume this is the only list of reads
   "reads2=s", # optional in interface
@@ -36,7 +35,7 @@ GetOptions(\%options,
 );
 
 # start writing command line
-$cmd = "$options{patchesdir}/$star --runMode alignReads --genomeLoad LoadAndRemove --runThreadN $Nthreads";
+$cmd = "STAR --runMode alignReads --genomeLoad LoadAndRemove --runThreadN $Nthreads";
  
 # add index to command line
 # a prebuilt index is in a directory (pointed to by the FTP object)

@@ -1,11 +1,12 @@
+#Tue, 07 Mar 2017 04:44:37 -0500
 #STAR.aligner
 #Fri Mar 03 01:09:59 CET 2017
 JVMLevel=
-LSID=urn:lsid:org.genepattern:module.star:00010:1.0.3
+LSID=urn\:lsid\:org.genepattern\:module.star\:00010\:1.1.1
 
 author=Guy Bottu;V.I.B.-B.I.T.S.
 categories=RNA-seq
-commandLine=<perl> <libdir>star_aligner_wrapper.pl --patchesdir <patches> --index <star.index> --reads1 <reads.pair.1> <reads.pair.2> <max.reads.to.align> --alignendtoend <align.read.end.to.end> --maxNmismatch <max.number.mismatches> --maxFmismatch <max.fraction.mistaches> --minoverhangannot <min.overhang.annotated.read> --minoverhangnotannot <min.overhang.not.annotated.read> --minintronlength <min.intron.length> --maxintronlength <max.intron.length> --matesmaxgap <mates.max.gap> --multimapmismatchrange <secondary.mapping.mismatches.range> --maxmultimap <max.multimapping> --canonicaloverhang <min.report.canonical.junction.overhang> --noncanonicaloverhang <min.report.noncanonical.junction.overhang> --maponlyreportedjunctions <map.only.reported.juntions> --twopass <two.pass> --detectchimeric <detect.chimeric.transcripts> --outputunmapped <output.unmapped.reads> --quantify <quantify.genes> --wiggle <output.wiggle.file> --wigglesignal <wiggle.signal>  --format <output.format> --HIflag <HI.flag> <output.prefix>
+commandLine=<run-with-env> -u perl/5.14 -u star/2.5.2b perl <libdir>star_aligner_wrapper.pl --index <star.index> --reads1 <reads.pair.1> <reads.pair.2> <max.reads.to.align> --alignendtoend <align.read.end.to.end> --maxNmismatch <max.number.mismatches> --maxFmismatch <max.fraction.mistaches> --minoverhangannot <min.overhang.annotated.read> --minoverhangnotannot <min.overhang.not.annotated.read> --minintronlength <min.intron.length> --maxintronlength <max.intron.length> --matesmaxgap <mates.max.gap> --multimapmismatchrange <secondary.mapping.mismatches.range> --maxmultimap <max.multimapping> --canonicaloverhang <min.report.canonical.junction.overhang> --noncanonicaloverhang <min.report.noncanonical.junction.overhang> --maponlyreportedjunctions <map.only.reported.juntions> --twopass <two.pass> --detectchimeric <detect.chimeric.transcripts> --outputunmapped <output.unmapped.reads> --quantify <quantify.genes> --wiggle <output.wiggle.file> --wigglesignal <wiggle.signal>  --format <output.format> --HIflag <HI.flag> <output.prefix>
 cpuType=any
 description=STAR (Spliced Transcripts Alignment to a Reference) 2.5.2a is a fast RNA-seq reads to genome mapper. It differs from other mappers as TopHat in that it gains speed at the expense of consuming more RAM and that it incorporates transcriptome annotation at the indexing build stage rather than at the analysis stage. It can optionally detect non-canonical splices and chimeric transcripts.
 fileFormat=bam;bg;sam;tab;wig
@@ -151,7 +152,7 @@ p19_type=java.lang.String
 p19_value=yes\=yes;no\=no
 p1_MODE=IN
 p1_TYPE=FILE
-p1_choiceDir=ftp://193.191.128.4/pub/star_index/
+p1_choiceDir=ftp\://193.191.128.4/pub/star_index/
 p1_choiceDirFilter=type\=dir
 p1_default_value=
 p1_description=A STAR index. Select a prebuilt index or upload your own as a ZIP file (you can make one using STAR.indexer).
@@ -369,4 +370,4 @@ quality=production
 taskDoc=star_aligner.html
 taskType=RNA-seq
 userid=gbottu
-version=Changed base lsid to match GenePattern naming convention
+version=replaced hard-coded path to STAR with <run-with-env> dependencies\: perl/5.14 and star/2.5.2b
