@@ -7,3 +7,6 @@ and that it incorporates transcriptome annotation at the indexing build stage ra
 analysis stage. It can optionally detect non-canonical splices and chimeric transcripts.
 
 Initial wrapper module was developed for use at VIB (http://www.vib.be/).
+
+The version in this repo has been modified to work in the genepattern/docker-staraligner docker container.
+
