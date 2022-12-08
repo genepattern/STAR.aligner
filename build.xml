@@ -28,6 +28,15 @@
 
 <project basedir="" default="devReleaseModule" name="STAR.aligner">
 
+    <target name="test">
+        <path id="example.path">
+        <fileset dir=".">
+            <include name="*" />
+        </fileset>
+        </path>
+        <echo message="My build-path is ${toString:example.path}" />
+    </target>
+
     <target name="init">
         <tstamp />
         <property name="test.version" value="999999999"/>
