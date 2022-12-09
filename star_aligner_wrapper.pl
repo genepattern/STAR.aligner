@@ -4,7 +4,7 @@ use File::Path qw(make_path remove_tree); # needed for custom index
 
 #$star = 'STAR-2.5.2b/bin/Linux_x86_64_static/STAR';
 
-$star = '/star_install/STAR-2.7.1a/bin/Linux_x86_64/STAR';
+$star = '/star_install/STAR-2.7.10b/bin/Linux_x86_64/STAR';
 
 $Nthreads = 4;
 
