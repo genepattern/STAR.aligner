@@ -8,8 +8,9 @@ JOB_DEFINITION_NAME="STAR"
 JOB_ID=STAR_ALGN_$1
 JOB_QUEUE=TedTest
 S3_ROOT=s3://moduleiotest
+#WORKING_DIR=$PWD/job_flat
 WORKING_DIR=$PWD/job_52345
 
-DOCKER_CONTAINER=genepattern/star.aligner:v0.48
+DOCKER_CONTAINER=genepattern/star.aligner:v0.49
 
 

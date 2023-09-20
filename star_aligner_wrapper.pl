@@ -51,13 +51,21 @@ if (-d $options{index}) { # is prebuilt index from VIB FTP server
   $zipfile = $options{index}; 
   $indexarchive = Archive::Extract->new(archive => $zipfile);
   if (not ($indexarchive->is_tgz or $indexarchive->is_zip or $indexarchive->is_tbz)) { die "\nCustom index should be in archive with extension .zip .tar.gz .tgz .tar.bz2 .tbz\n" }
-  $indexarchive->extract or die "\nCould not extract $zipfile. Are you sure this is a valid archive with a STAR index ?\n";
+  $indexarchive->extract(to => 'Genome') or die "\nCould not extract $zipfile. Are you sure this is a valid archive with a STAR index ?\n";
   @filesfromzip = @{$indexarchive->files};
   $ziptest1 = 1; $ziptest2 = 1;
   foreach $filefromzip (@filesfromzip) {
-    if ($filefromzip =~ /^(.+)\/SA$/) { $ziptest1 = 0 ; $indexdir = $1 }
+    #if ($filefromzip =~ /^(.+)\/SA$/) { $ziptest1 = 0 ; $indexdir = $1 }
+    #if ($filefromzip =~ /^.+\/SAindex$/) { $ziptest2 = 0 }
+    if ($filefromzip =~ /^(.+)\/SA$/) { $ziptest1 = 0 ; $indexdir = "Genome/$1" }
+    elsif ($filefromzip =~ /SA$/) { $ziptest1 = 0 ; $indexdir = 'Genome' }
+    
     if ($filefromzip =~ /^.+\/SAindex$/) { $ziptest2 = 0 }
+    elsif ($filefromzip =~ /SAindex$/) { $ziptest2 = 0 }
+
+
   }
+  print "------- $indexdir ==\n";
   if ($ziptest1 or $ziptest2) {
     die "\n$zipfile\ndoes not look like a valid STAR index, it should contain a directory/folder with inside files 'SA' and 'SAindex'\n";
   }
@@ -160,3 +168,6 @@ if ($options{twopass} eq 'yes') {
   remove_tree("$options{outputprefix}._STARgenome");
   remove_tree("$options{outputprefix}._STARpass1");
 }
+if (-e 'Genome') {
+  remove_tree('Genome');
+} 
