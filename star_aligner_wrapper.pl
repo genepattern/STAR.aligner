@@ -84,12 +84,15 @@ foreach $filename (@reads1) {
 
   $reads1archive = Archive::Extract->new(archive => $filename);
 
-  if ($reads1archive){  
+  if ($reads1archive){
+    print "ITS A ARCHIVE FOR READ !";  
     if (($reads1archive->is_tgz or $reads1archive->is_zip or $reads1archive->is_gz)) { 
       $reads1archive->extract(to => '.') or die "\nCould not extract $filename. Are you sure this is a valid archive?\n";
       @filesfromzip = @{$reads1archive->files};
       foreach $filefromzip (@filesfromzip) {
           $reads1 .= "$filefromzip,";
+          print "INSIDE READ1 ZIP $filefromzip";
+
       }
     } else {
       $reads1 .= "$filename,";
