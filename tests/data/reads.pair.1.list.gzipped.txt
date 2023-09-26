@@ -1,0 +1,1 @@
+/Users/liefeld/GenePattern/gp_dev/modules/STAR.aligner/tests/data/reads_1gz.fa.gz

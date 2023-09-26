@@ -9,6 +9,8 @@ RUN apt-get install -y libarchive-extract-perl
 #RUN sudo apt-get install gcc-4.8 g++-4.8 && \
 #    sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.8
 
+RUN sudo cpan Capture::Tiny
+
 COPY star_aligner_wrapper.pl /usr/local/bin/star_aligner_wrapper.pl
 COPY ./* /build/
 

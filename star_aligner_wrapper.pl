@@ -76,10 +76,32 @@ if (-d $options{index}) { # is prebuilt index from VIB FTP server
 open READSLIST, $options{reads1};
   @reads1 = <READSLIST>;
 close READSLIST;
+
+
 foreach $filename (@reads1) {
   chomp $filename; # remove end-of-line
-  $reads1 .= "$filename,";
+  # unzip it if its an archive
+
+  $reads1archive = Archive::Extract->new(archive => $filename);
+
+  if ($reads1archive){  
+    if (($reads1archive->is_tgz or $reads1archive->is_zip or $reads1archive->is_gz)) { 
+      $reads1archive->extract(to => '.') or die "\nCould not extract $filename. Are you sure this is a valid archive?\n";
+      @filesfromzip = @{$reads1archive->files};
+      foreach $filefromzip (@filesfromzip) {
+          $reads1 .= "$filefromzip,";
+      }
+    } else {
+      $reads1 .= "$filename,";
+    }
+  } else {
+    $reads1 .= "$filename,";
+  }
+
 }
+
+
+
 chop $reads1; # remove last ','
 $cmd .= " --readFilesIn $reads1";
 if (exists $options{reads2}) {
@@ -91,11 +113,29 @@ if (exists $options{reads2}) {
   }
   foreach $filename (@reads2) {
     chomp $filename; # remove end-of-line
-    $reads2 .= "$filename,";
+
+    
+    $reads2archive = Archive::Extract->new(archive => $filename);
+   
+
+    if ($reads2archive){
+      if (($reads2archive->is_tgz or $reads2archive->is_zip or $reads2archive->is_gz)) {
+        $reads2archive->extract(to => '.') or die "\nCould not extract $filename. Are you sure this is a valid archive?\n";
+        @filesfromzip = @{$reads2archive->files};
+        foreach $filefromzip (@filesfromzip) {
+            $reads2 .= "$filefromzip,";
+        }
+      } else {
+        $reads2 .= "$filename,";
+      }
+    } else {
+      $reads2 .= "$filename,";
+    }
   }
   chop $reads2; # remove last ','
   $cmd .= " $reads2";
 }
+
 
 # complete command line
 if (exists $options{mapN}) {
@@ -171,3 +211,17 @@ if ($options{twopass} eq 'yes') {
 if (-e 'Genome') {
   remove_tree('Genome');
 } 
+
+if ($reads1archive){
+@filesfromzip = @{$reads1archive->files};
+  foreach $filefromzip (@filesfromzip) {
+     remove_tree($filefromzip)
+  }
+}
+if ($reads2archive){
+@filesfromzip = @{$reads2archive->files};
+  foreach $filefromzip (@filesfromzip) {
+     remove_tree($filefromzip)
+  }
+} 
+
