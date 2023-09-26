@@ -369,6 +369,6 @@ quality=${quality.level}
 taskDoc=http://software.broadinstitute.org/cancer/software/genepattern/modules/docs/STAR.aligner/1
 taskType=RNA-seq
 userid=gbottu
-version=Update to STAR 2.7.10.b
+version=Adding support for gzipped input data
 publicationDate=12/09/2022 11\:30 
 
